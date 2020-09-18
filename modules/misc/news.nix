@@ -1520,6 +1520,16 @@ in
           A new module is available: 'programs.dircolors'
         '';
       }
+
+      {
+        time = "2020-09-18T21:08:57+00:00";
+        message = ''
+          The bqv-flakes branch is obsolete and will be removed shortly,
+          for flake support please use the master branch instead.
+
+          See https://github.com/nix-community/home-manager#flakes
+        '';
+      }
     ];
   };
 }

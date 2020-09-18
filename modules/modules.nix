@@ -195,6 +195,12 @@ let
       _module.args.pkgs = lib.mkDefault pkgs;
       _module.check = check;
       lib = lib.hm;
+      warnings = [
+        ''
+          The bqv-flakes branch is obsolete and will be removed shortly, for
+          flake support please use the master branch instead. See
+          https://github.com/nix-community/home-manager#flakes''
+      ];
     } // optionalAttrs useNixpkgsModule {
       nixpkgs.system = mkDefault pkgs.system;
     };
