@@ -343,7 +343,7 @@ in {
     profileVersion = mkOption {
       inherit visible;
       type = types.nullOr types.ints.unsigned;
-      default = 2;
+      default = if isDarwin then null else 2;
       description = "profile version, set null for nix-darwin";
     };
 
