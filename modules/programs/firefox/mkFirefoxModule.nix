@@ -59,10 +59,9 @@ let
       IsRelative = 1;
       Default = if profile.isDefault then 1 else 0;
     }) // {
-      General = {
+      General = ({
         StartWithLastProfile = 1;
-        Version = 2;
-      };
+      } // (if cfg.profileVersion == null then { } else { Version = cfg.profileVersion; }));
     };
 
   profilesIni = generators.toINI { } profiles;
@@ -340,6 +339,13 @@ in {
         BlockAboutConfig = true;
       };
     });
+
+    profileVersion = mkOption {
+      inherit visible;
+      type = types.nullOr types.ints.unsigned;
+      default = if isDarwin then null else 2;
+      description = "profile version, set null for nix-darwin";
+    };
 
     profiles = mkOption {
       inherit visible;
